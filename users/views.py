@@ -27,7 +27,7 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("users/dashboard.html")
+				return redirect("dashboard.html")
 			else:
 				messages.error(request,"Invalid username or password.")
 		else:
@@ -40,9 +40,9 @@ def logout_request(request):
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("users/dashboard.html")
 def dashboard(request):
- if request.user.is_authenticated:
+#  if request.user.is_authenticated:
  	User = get_user_model()
  	users = User.objects.all()
  	return render(request, "users/dashboard.html",{'users':users})
- else:
-	 return redirect("users/login.html")
+#  else:
+# 	 return redirect("users/login.html")
