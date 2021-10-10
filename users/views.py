@@ -40,6 +40,9 @@ def logout_request(request):
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("users/dashboard.html")
 def dashboard(request):
- User = get_user_model()
- users = User.objects.all()
- return render(request, "users/dashboard.html",{'users':users})
+ if request.user.is_authenticated:
+ 	User = get_user_model()
+ 	users = User.objects.all()
+ 	return render(request, "users/dashboard.html",{'users':users})
+ else:
+	 return redirect("users/login.html")
