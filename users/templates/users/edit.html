@@ -1,0 +1,77 @@
+ 
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<title>Django App</title>
+{% load static %}  
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+</head> 
+<body>
+<div class="container">
+ <div class="row">
+    
+    <div class="col-md-12">
+        <h4>Django CRUD (Create Read Update Delete) </h4>  
+     <form method="POST" class="post-form" action="/update/{{user.id}}">  
+       {% csrf_token %}  
+      <div class="container">  
+     <br>  
+      <div class="form-group row">  
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+      <h3>Update Details</h3>  
+      </div>  
+       </div>  
+      <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">User Id:</label>  
+      <div class="col-sm-4">  
+       <input type="text" class="form-control" name="id" id="id_id" required maxlength="20" value="{{ user.id }}"/>  
+      </div>  
+       </div>  
+       <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">User Name:</label>  
+      <div class="col-sm-4">  
+       <input type="text" class="form-control" name="name" id="id_name" required maxlength="100" value="{{ user.username }}" />  
+      </div>  
+       </div>  
+      <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">user Email:</label>  
+      <div class="col-sm-4">  
+       <input type="email" class="form-control" name="email" id="id_email" required maxlength="254" value="{{ user.email }}" />  
+      </div>  
+       </div>  
+      <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">user Address:</label>  
+      <div class="col-sm-4">  
+       <input type="text" class="form-control" name="contact" id="id_contact" required maxlength="15" value="{{ user.address }}" />  
+      </div>  
+       </div>  
+      <div class="form-group row">  
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+      <button type="submit" class="btn btn-success btn-lg">Update</button>  
+      </div>  
+       </div>  
+      </div>  
+     </form>  
+
+ </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#bootstrapdatatable').DataTable({     
+      "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+        "iDisplayLength": 3
+       } 
+    );
+} );
+</script>
+
+</body> 
+</html>
